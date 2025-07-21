@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #745fea 0%, #fff 100%);
+            margin: 0; padding: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 32px 32px 16px 32px;
+            border-radius: 12px;
+            max-width: 420px;
+            box-shadow: 0 4px 24px 0 rgba(50,50,93,0.12);
+            margin: 80px auto;
+            text-align: center;
+        }
+        h2 {
+            color: #4e37b2;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        textarea {
+            width: 90%;
+            border: 1.5px solid #d8d7e3;
+            min-height: 80px;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 1em;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #4e37b2;
+            color: white;
+            padding: 10px 32px;
+            margin-top: 16px;
+            border: none;
+            border-radius: 7px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(100,100,120,0.08);
+            transition: background 0.2s;
+        }
+        input[type="submit"]:hover {
+            background-color: #735fe7;
+        }
+        .result {
+            margin-top: 28px;
+            padding: 18px 0;
+            border-radius: 8px;
+            background: #f2f0f9;
+            font-size: 1.20em;
+            color: #3b3267;
+            font-weight: bold;
+            box-shadow: 0 1px 3px rgba(120,120,140,0.09);
+        }
+        .error {
+            margin-top: 28px;
+            padding: 12px 0;
+            background: #ffd3d3;
+            border-radius: 7px;
+            color: #a10000;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sentiment Analysis Using Azure OpenAI</h2>
+        <form method="post">
+            <textarea name="text" placeholder="Type or paste text here..." required></textarea><br>
+            <input type="submit" value="Analyze">
+        </form>
+        {% if sentiment %}
+            <div class="result">
+                <strong>Sentiment:</strong> {{ sentiment }}
+            </div>
+        {% endif %}
+        {% if error_message %}
+            <div class="error">{{ error_message }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
